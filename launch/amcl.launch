@@ -2,15 +2,15 @@
 
   <arg name="drone_name" default="$(arg drone_name)"/>
   <arg name="use_map_topic"   default="false"/>
-  <arg name="scan_topic"      default="scan"/>
-  <arg name="odom_frame_id"   default="world"/>
-  <arg name="base_frame_id"   default="base_footprint"/>
+  <arg name="scan_topic"      default="/$(arg drone_name)/scan"/>
+  <arg name="odom_frame_id"   default="/$(arg drone_name)/world"/>
+  <arg name="base_frame_id"   default="/$(arg drone_name)/base_footprint"/>
   <arg name="initial_pose_x"  default="0.0"/>
   <arg name="initial_pose_y"  default="0.0"/>
   <arg name="initial_pose_a"  default="0.0"/>
   <arg name="global_frame_id" default="/map"/>
 
-  <node pkg="amcl" type="amcl" name="$(arg drone_name)_amcl">
+  <node pkg="amcl" type="amcl" name="amcl">
 
     <param name="use_map_topic"             value="$(arg use_map_topic)"/>
     <!-- Publish scans from best pose at a max of 10 Hz -->
@@ -51,9 +51,7 @@
     <param name="initial_pose_y"            value="$(arg initial_pose_y)"/>
     <param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
     <remap from="scan"                      to="$(arg scan_topic)"/>
-    <remap from="/initialpose"              to="$(arg drone_name)/initialpose"/>
+    <remap from="/initialpose"              to="/$(arg drone_name)/initialpose"/>
   </node>
 
-  <remap from="/particlecloud"              to="$(arg drone_name)/particlecloud"/>
-  
 </launch>

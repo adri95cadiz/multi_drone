@@ -1,0 +1,20 @@
+local_costmap:
+
+    footprint: [[-0.305, -0.18], [-0.305, 0.18], [0.305, 0.18], [0.305, -0.18]]
+    footprint_padding: 0.01
+    transform_tolerance: 1.0
+    update_frequency: 10.0
+    publish_frequency: 10.0
+    global_frame: /map
+    robot_base_frame: /base_footprint
+    track_unknown_space: false
+    static_map: false
+    rolling_window: true
+    width: 4.0
+    height: 4.0
+    resolution: 0.1
+
+    plugins:
+      - {name: static_layer,            type: "costmap_2d::StaticLayer"}
+      - {name: obstacle_layer,          type: "costmap_2d::VoxelLayer"}
+      - {name: inflation_layer,         type: "costmap_2d::InflationLayer"}

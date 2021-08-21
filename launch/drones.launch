@@ -1,0 +1,19 @@
+<launch>
+
+    <!-- BEGIN DRONE 1-->
+    <group ns="drone1">
+      <include file="$(find multi_drone)/launch/one_drone.launch" >
+        <arg name="y" value="1" />
+        <arg name="drone_name"  value="drone1" />
+      </include>
+    </group>
+
+    <!-- BEGIN DRONE 2-->
+    <group ns="drone2">
+      <include file="$(find multi_drone)/launch/one_drone.launch" >
+        <arg name="y" value="-1" />
+        <arg name="drone_name"  value="drone2" />
+      </include>
+    </group>
+
+</launch>

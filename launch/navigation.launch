@@ -1,0 +1,31 @@
+<launch>
+
+  <param name="/use_sim_time" value="true"/>
+
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find multi_drone)/map/map.yaml" >
+    <param name="frame_id" value="/map" />
+  </node>
+
+  <group ns="drone1">
+    <include file="$(find multi_drone)/launch/move_base.launch" >
+      <arg name="initial_pose_x" value=" 0" />
+      <arg name="initial_pose_y" value=" 1" />
+      <arg name="initial_pose_a" value=" 0" />
+      <arg name="drone_name" value="drone1"/>
+    </include>
+  </group>
+
+  <group ns="drone2">
+    <include file="$(find multi_drone)/launch/move_base.launch" >
+      <arg name="initial_pose_x" value=" 0" />
+      <arg name="initial_pose_y" value="-1" />
+      <arg name="initial_pose_a" value=" 0" />
+      <arg name="drone_name" value="drone2"/>
+    </include>
+  </group>
+
+  <!-- Launching Rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find multi_drone)/rviz/multi_drone_navigation.rviz" />
+
+</launch>

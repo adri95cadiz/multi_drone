@@ -1,0 +1,21 @@
+<launch>
+
+  <arg name="drone_name" default=""/>
+
+  <!-- Start SLAM system -->
+  <include file="$(find multi_drone)/launch/drone_gmapping.launch">
+    <arg name="pub_map_odom_transform" value="false"/>
+    <arg name="drone_name" value="$(arg drone_name)"/>
+    <arg name="tf_map_scanmatch_transform_frame_name" value="scanmatcher_frame"/>
+  </include>
+
+  <!-- Start GeoTIFF mapper -->
+  <include file="$(find multi_drone)/launch/geotiff.launch">
+    <arg name="trajectory_publish_rate" value="4"/>
+    <arg name="drone_name" value="$(arg drone_name)"/>
+  </include>
+
+  <!-- Start rviz visualization with preset config -->
+  <!--<node pkg="rviz" type="rviz" name="rviz" args=""/>-->
+
+</launch>

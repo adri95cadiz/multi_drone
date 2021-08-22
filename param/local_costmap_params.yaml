@@ -1,18 +1,18 @@
 local_costmap:
 
-    footprint: [[-0.305, -0.18], [-0.305, 0.18], [0.305, 0.18], [0.305, -0.18]]
-    footprint_padding: 0.01
-    transform_tolerance: 1.0
-    update_frequency: 10.0
-    publish_frequency: 10.0
+    transform_tolerance: 0.5
+    update_frequency: 5.0
+    publish_frequency: 2.0
     global_frame: /map
     robot_base_frame: /base_footprint
     track_unknown_space: false
     static_map: false
     rolling_window: true
-    width: 4.0
-    height: 4.0
-    resolution: 0.1
+    width: 5.0
+    height: 5.0
+    resolution: 0.02
+    planner_frequency: 1.0
+    planner_patience: 5.0
 
     plugins:
       - {name: static_layer,            type: "costmap_2d::StaticLayer"}

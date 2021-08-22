@@ -18,8 +18,8 @@
   </include>
 
   <arg name="odom_frame_id"     default="/$(arg drone_name)/world"          />
-  <arg name="base_frame_id"     default="/$(arg drone_name)/base_footprint" />
-  <arg name="global_frame_id"   default="/$(arg drone_name)/map"            />
+  <arg name="base_frame_id"     default="base_footprint" />
+  <arg name="global_frame_id"   default="map"            />
   <arg name="laser_topic"       default="/$(arg drone_name)/scan"           />
   <arg name="odom_topic"        default="/$(arg drone_name)/ground_truth/state" />
   <arg name="custom_param_file" default="$(find multi_drone)/param/dummy.yaml"  />
@@ -38,20 +38,24 @@
     <rosparam file="$(arg custom_param_file)" command="load" />
 
     <!-- reset frame_id parameters using user input data -->
-    <param name="global_costmap/global_frame"     value="$(arg global_frame_id)"/>
-    <param name="global_costmap/robot_base_frame" value="$(arg base_frame_id)"  />
-    <param name="local_costmap/global_frame"      value="$(arg global_frame_id)"/>
-    <param name="local_costmap/robot_base_frame"  value="$(arg base_frame_id)"  />
-    <param name="DWAPlannerROS/global_frame_id"   value="$(arg global_frame_id)"/>
+    <param name="global_costmap/global_frame"     value="/$(arg drone_name)/$(arg global_frame_id)"/>
+    <param name="global_costmap/robot_base_frame" value="/$(arg drone_name)/$(arg base_frame_id)"  />
+    <param name="local_costmap/global_frame"      value="/$(arg drone_name)/$(arg global_frame_id)"/>
+    <param name="local_costmap/robot_base_frame"  value="/$(arg drone_name)/$(arg base_frame_id)"  />
+    <param name="DWAPlannerROS/global_frame_id"   value="/$(arg drone_name)/$(arg global_frame_id)"/>
 
-    <param name="global_costmap/obstacle_layer/scan/topic"              value="$(arg laser_topic)"  />
-    <param name="local_costmap/obstacle_layer/scan/topic"               value="$(arg laser_topic)"  />
-    <param name="local_costmap/sensor/laser_scan_sensor/topic"          value="$(arg laser_topic)"  />
+    <param name="global_costmap/obstacle_layer/scan/topic"              value="/$(arg drone_name)/$(arg laser_topic)"  />
+    <param name="local_costmap/obstacle_layer/scan/topic"               value="/$(arg drone_name)/$(arg laser_topic)"  />
+    <param name="local_costmap/sensor/laser_scan_sensor/topic"          value="/$(arg drone_name)/$(arg laser_topic)"  />
     <param name="local_costmap/sensor/laser_scan_sensor/sensor_frame"   value="/$(arg drone_name)/laser0_frame"        />
 
 
-    <remap from="base_footprint"      to="$(arg base_frame_id)"     />
-    <remap from="/cmd_vel"            to="/$(arg drone_name)/cmd_vel"/>
+    <remap from="/base_footprint"      to="/$(arg drone_name)/base_footprint"     />
+    <remap from="/odom"                to="/$(arg drone_name)/ground_truth/state" />
+    <remap from="/map"                 to="/$(arg drone_name)/map"                />
+    <remap from="/world"               to="/$(arg drone_name)/world"              />
+    <remap from="/scan"                to="/$(arg drone_name)/scan"               />
+    <remap from="/cmd_vel"             to="/$(arg drone_name)/cmd_vel"            />
     <remap from="/move_base/TebLocalPlannerROS/global_plan"                        to="/$(arg drone_name)/move_base/TebLocalPlannerROS/global_plan" />
     <remap from="/move_base/TebLocalPlannerROS/local_plan"                         to="/$(arg drone_name)/move_base/TebLocalPlannerROS/local_plan" />
     <remap from="/move_base/TebLocalPlannerROS/teb_markers"                        to="/$(arg drone_name)/move_base/TebLocalPlannerROS/teb_markers" />

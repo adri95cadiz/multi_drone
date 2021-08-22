@@ -9,7 +9,7 @@
   <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
 
     <!-- Frame names -->
-    <param name="map_frame" value="$(arg drone_name)/map" />
+    <param name="map_frame"  value="$(arg drone_name)/map" />
     <param name="base_frame" value="$(arg drone_name)/base_footprint" />
     <param name="odom_frame" value="$(arg drone_name)/world" />
 
@@ -47,6 +47,7 @@
 
     <param name="tf_map_scanmatch_transform_frame_name" value="$(arg drone_name)/$(arg tf_map_scanmatch_transform_frame_name)" />
 
+    <remap from="/$(arg drone_name)/poseupdate" to="/$(arg drone_name)/initialpose" />
 
   </node>
 

@@ -42,21 +42,16 @@
     <param name="global_costmap/robot_base_frame" value="$(arg base_frame_id)"  />
     <param name="local_costmap/global_frame"      value="$(arg global_frame_id)"/>
     <param name="local_costmap/robot_base_frame"  value="$(arg base_frame_id)"  />
-    <param name="DWAPlannerROS/global_frame_id"   value="$(arg global_frame_id)"  />
+    <param name="DWAPlannerROS/global_frame_id"   value="$(arg global_frame_id)"/>
 
     <param name="global_costmap/obstacle_layer/scan/topic"              value="$(arg laser_topic)"  />
     <param name="local_costmap/obstacle_layer/scan/topic"               value="$(arg laser_topic)"  />
-    <param name="local_costmap/sensor/laser_scan_sensor/sensor_frame"   value="/$(arg drone_name)/laser0_frame"        />
     <param name="local_costmap/sensor/laser_scan_sensor/topic"          value="$(arg laser_topic)"  />
+    <param name="local_costmap/sensor/laser_scan_sensor/sensor_frame"   value="/$(arg drone_name)/laser0_frame"        />
 
-    <remap from="odom"                to="$(arg odom_topic)"        />
-    <remap from="scan"                to="$(arg laser_topic)"       />
-    <remap from="map"                 to="$(arg global_frame_id)"   />
-    <remap from="world"               to="$(arg odom_frame_id)"     />
-    <remap from="ground_truth/state"  to="$(arg odom_topic)"        />
+
     <remap from="base_footprint"      to="$(arg base_frame_id)"     />
-    <remap from="cmd_vel"             to="/$(arg drone_name)/cmd_vel"/>
-    <remap from="/move_base_simple/goal"                                           to="/$(arg drone_name)/move_base_simple/goal" />
+    <remap from="/cmd_vel"            to="/$(arg drone_name)/cmd_vel"/>
     <remap from="/move_base/TebLocalPlannerROS/global_plan"                        to="/$(arg drone_name)/move_base/TebLocalPlannerROS/global_plan" />
     <remap from="/move_base/TebLocalPlannerROS/local_plan"                         to="/$(arg drone_name)/move_base/TebLocalPlannerROS/local_plan" />
     <remap from="/move_base/TebLocalPlannerROS/teb_markers"                        to="/$(arg drone_name)/move_base/TebLocalPlannerROS/teb_markers" />

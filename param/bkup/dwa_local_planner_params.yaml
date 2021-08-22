@@ -1,10 +1,10 @@
-TrajectoryPlannerROS:
+DWAPlannerROS:
 
 # Robot Configuration Parameters - Kobuki
-  max_vel_x: 0.75  # 0.55
+  max_vel_x: 0.5  # 0.55
   min_vel_x: 0.0
 
-  max_vel_y: 0.75  # diff drive robot
+  max_vel_y: 0.0  # diff drive robot
   min_vel_y: 0.0  # diff drive robot
 
   max_trans_vel: 0.5 # choose slightly less than the base's capability
@@ -54,8 +54,8 @@ TrajectoryPlannerROS:
 # Debugging
   publish_traj_pc : true
   publish_cost_grid_pc: true
-  global_frame_id: /map
+  global_frame_id: odom
 
 
 # Differential-drive robot configuration - necessary?
-holonomic_robot: true
+# holonomic_robot: true

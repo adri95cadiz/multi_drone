@@ -30,7 +30,7 @@
     <rosparam file="$(find multi_drone)/param/costmap_common_params.yaml"       command="load" ns="local_costmap" />
     <rosparam file="$(find multi_drone)/param/local_costmap_params.yaml"        command="load" />
     <rosparam file="$(find multi_drone)/param/global_costmap_params.yaml"       command="load" />
-    <rosparam file="$(find multi_drone)/param/dwa_local_planner_params.yaml"   command="load" />
+    <rosparam file="$(find multi_drone)/param/dwa_local_planner_params.yaml"    command="load" />
     <rosparam file="$(find multi_drone)/param/move_base_params.yaml"            command="load" />
     <rosparam file="$(find multi_drone)/param/global_planner_params.yaml"       command="load" />
     <rosparam file="$(find multi_drone)/param/navfn_global_planner_params.yaml" command="load" />
@@ -42,7 +42,7 @@
     <param name="global_costmap/robot_base_frame"        value="$(arg base_frame_id)"  />
     <param name="local_costmap/global_frame"             value="$(arg global_frame_id)"/>
     <param name="local_costmap/robot_base_frame"         value="$(arg base_frame_id)"  />
-    <param name="TrajectoryPlannerROS/global_frame_id"   value="$(arg odom_frame_id)"  />
+    <param name="DWAPlannerROS/global_frame_id"          value="$(arg odom_frame_id)"  />
 
     <param name="global_costmap/scan/topic"                             value="$(arg laser_topic)"  />
     <param name="local_costmap/scan/topic"                              value="$(arg laser_topic)"  />

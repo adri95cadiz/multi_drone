@@ -19,7 +19,7 @@
 
   <arg name="odom_frame_id"     default="/$(arg drone_name)/world"          />
   <arg name="base_frame_id"     default="/$(arg drone_name)/base_footprint" />
-  <arg name="global_frame_id"   default="/$(arg drone_name)/map"            />
+  <arg name="global_frame_id"   default="/map"            />
   <arg name="laser_topic"       default="/$(arg drone_name)/scan"           />
   <arg name="odom_topic"        default="/$(arg drone_name)/ground_truth/state" />
   <arg name="custom_param_file" default="$(find multi_drone)/param/dummy.yaml"  />
@@ -30,7 +30,7 @@
     <rosparam file="$(find multi_drone)/param/costmap_common_params.yaml"       command="load" ns="local_costmap" />
     <rosparam file="$(find multi_drone)/param/local_costmap_params.yaml"        command="load" />
     <rosparam file="$(find multi_drone)/param/global_costmap_params.yaml"       command="load" />
-    <rosparam file="$(find multi_drone)/param/dwa_local_planner_params.yaml"    command="load" />
+    <rosparam file="$(find multi_drone)/param/base_local_planner_params.yaml"    command="load" />
     <rosparam file="$(find multi_drone)/param/move_base_params.yaml"            command="load" />
     <rosparam file="$(find multi_drone)/param/global_planner_params.yaml"       command="load" />
     <rosparam file="$(find multi_drone)/param/navfn_global_planner_params.yaml" command="load" />
@@ -42,7 +42,7 @@
     <param name="global_costmap/robot_base_frame"        value="$(arg base_frame_id)"  />
     <param name="local_costmap/global_frame"             value="$(arg global_frame_id)"/>
     <param name="local_costmap/robot_base_frame"         value="$(arg base_frame_id)"  />
-    <param name="DWAPlannerROS/global_frame_id"          value="$(arg odom_frame_id)"  />
+    <param name="TrajectoryPlannerROS/global_frame_id"   value="$(arg odom_frame_id)"  />
 
     <param name="global_costmap/scan/topic"                             value="$(arg laser_topic)"  />
     <param name="local_costmap/scan/topic"                              value="$(arg laser_topic)"  />
@@ -59,8 +59,8 @@
     <remap from="odom"                 to="$(arg odom_topic)"           />
     <remap from="/cmd_vel"             to="/$(arg drone_name)/cmd_vel"  />
 
-    <remap from="/move_base/DWAPlannerROS/global_plan"                             to="/$(arg drone_name)/move_base/DWAPlannerROS/global_plan" />
-    <remap from="/move_base/DWAPlannerROS/local_plan"                              to="/$(arg drone_name)/move_base/DWAPlannerROS/local_plan" />
+    <remap from="/move_base/TrajectoryPlannerROS/global_plan"                      to="/$(arg drone_name)/move_base/TrajectoryPlannerROS/global_plan" />
+    <remap from="/move_base/TrajectoryPlannerROS/local_plan"                       to="/$(arg drone_name)/move_base/TrajectoryPlannerROS/local_plan" />-->
     <remap from="/move_base/global_costmap/costmap"                                to="/$(arg drone_name)/move_base/global_costmap/costmap" />
     <remap from="/move_base/global_costmap/costmap_updates"                        to="/$(arg drone_name)/move_base/global_costmap/costmap_updates" />
     <remap from="/move_base/local_costmap/costmap"                                 to="/$(arg drone_name)/move_base/local_costmap/costmap" />
@@ -71,9 +71,9 @@
     <remap from="/move_base/GlobalPlanner/parameter_updates"                       to="/$(arg drone_name)/move_base/GlobalPlanner/parameter_updates" />
     <remap from="/move_base/GlobalPlanner/plan"                                    to="/$(arg drone_name)/move_base/GlobalPlanner/plan" />
     <remap from="/move_base/GlobalPlanner/potential"                               to="/$(arg drone_name)/move_base/GlobalPlanner/potential" />
-    <remap from="/move_base/DWAPlannerROS/obstacles"                               to="/$(arg drone_name)/move_base/TrajectoryPlannerROS/obstacles" />
-    <remap from="/move_base/DWAPlannerROS/parameter_descriptions"                  to="/$(arg drone_name)/move_base/TrajectoryPlannerROS/parameter_descriptions" />
-    <remap from="/move_base/DWAPlannerROS/parameter_updates"                       to="/$(arg drone_name)/move_base/TrajectoryPlannerROS/parameter_updates" />
+    <remap from="/move_base/TrajectoryPlannerROS/obstacles"                        to="/$(arg drone_name)/move_base/TrajectoryPlannerROS/obstacles" />
+    <remap from="/move_base/TrajectoryPlannerROS/parameter_descriptions"           to="/$(arg drone_name)/move_base/TrajectoryPlannerROS/parameter_descriptions" />
+    <remap from="/move_base/TrajectoryPlannerROS/parameter_updates"                to="/$(arg drone_name)/move_base/TrajectoryPlannerROS/parameter_updates" />
     <remap from="/move_base/cancel"                                                to="/$(arg drone_name)/move_base/cancel" />
     <remap from="/move_base/current_goal"                                          to="/$(arg drone_name)/move_base/current_goal" />
     <remap from="/move_base/feedback"                                              to="/$(arg drone_name)/move_base/feedback" />

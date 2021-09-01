@@ -13,28 +13,21 @@
   <param name="robot_description" command="$(find xacro)/xacro --inorder $(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro" />
   <arg name="model" default="$(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro"/>
 
-
-  <node pkg="robot_state_publisher" type="robot_state_publisher" name="$(arg drone_name)_state_publisher" output="screen">
-    <param name="publish_frequency" type="double" value="50.0" />
-    <param name="tf_prefix" value="$(arg drone_name)" />
-  </node>
-
-  <include file="$(find multi_drone)/launch/spawn_quadrotor.launch">
-      <arg name="name" value="$(arg drone_name)"/>
-      <arg name="model" value="$(arg model)"/>
-      <arg name="tf_prefix" value="$(arg drone_name)" />
-      <arg name="x" default="$(arg x)"/>
-      <arg name="y" default="$(arg y)"/>
-      <arg name="z" default="$(arg z)"/>
-      <arg name="use_ground_truth_for_tf" value="$(arg use_ground_truth_for_tf)"/>
-      <arg name="use_ground_truth_for_control" value="$(arg use_ground_truth_for_control)"/>
-      <arg name="use_pose_estimation" value="$(arg use_pose_estimation)"/>
-      <arg name="controllers" value="
-          controller/attitude
-          controller/velocity
-          controller/position
-          "/>
-
+  <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+    <arg name="name" value="$(arg drone_name)"/>
+    <arg name="model" value="$(arg model)"/>
+    <arg name="tf_prefix" value="$(arg drone_name)" />
+    <arg name="x" default="$(arg x)"/>
+    <arg name="y" default="$(arg y)"/>
+    <arg name="z" default="$(arg z)"/>
+    <arg name="use_ground_truth_for_tf" value="$(arg use_ground_truth_for_tf)"/>
+    <arg name="use_ground_truth_for_control" value="$(arg use_ground_truth_for_control)"/>
+    <arg name="use_pose_estimation" value="$(arg use_pose_estimation)"/>
+    <arg name="controllers" value="
+        controller/attitude
+        controller/velocity
+        controller/position
+        "/>
   </include>
 
 </launch>

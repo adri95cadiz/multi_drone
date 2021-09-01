@@ -1,4 +1,11 @@
-**multi_drone**
+# multi_drone
+
+## Installation
+
+**Depends on the hector_quadrotor package, you can install from:**
+https://github.com/basavarajnavalgund/hector-quadrotor
+
+## Usage
 
 **Launch multiple drones**
 ```

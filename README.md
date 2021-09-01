@@ -1,5 +1,8 @@
 # multi_drone
 
+ROS package for multiple drone mapping and navigation in ROS.
+Using Hector Quadrotor drones, Hector-SLAM and the navigation stack.
+
 ## Installation
 
 **Depends on the hector_quadrotor package, you can install from:**

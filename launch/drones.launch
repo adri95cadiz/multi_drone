@@ -1,19 +1,54 @@
 <launch>
 
-    <!-- BEGIN DRONE 1-->
+    <!-- BEGIN DRONE 1 -->
     <group ns="drone1">
       <include file="$(find multi_drone)/launch/one_drone.launch" >
-        <arg name="y" value="1" />
+        <arg name="x" value="-0.5" />
+        <arg name="y" value=" 0.5" />
         <arg name="drone_name"  value="drone1" />
       </include>
     </group>
 
-    <!-- BEGIN DRONE 2-->
+    <!-- BEGIN DRONE 2 -->
     <group ns="drone2">
       <include file="$(find multi_drone)/launch/one_drone.launch" >
-        <arg name="y" value="-1" />
+        <arg name="x" value="-0.5" />
+        <arg name="y" value="-0.5" />
         <arg name="drone_name"  value="drone2" />
       </include>
     </group>
+
+    <!-- BEGIN DRONE 3 -->
+    <!--
+    <group ns="drone3">
+      <include file="$(find multi_drone)/launch/one_drone.launch" >
+        <arg name="x" value="0.5" />
+        <arg name="y" value="0.5" />
+        <arg name="drone_name"  value="drone3" />
+      </include>
+    </group>
+    -->
+
+    <!-- BEGIN DRONE 4 -->
+    <!--
+    <group ns="drone4">
+      <include file="$(find multi_drone)/launch/one_drone.launch" >
+        <arg name="x" value=" 0.5" />
+        <arg name="y" value="-0.5" />
+        <arg name="drone_name"  value="drone4" />
+      </include>
+    </group>
+    -->
+
+    <!-- BEGIN DRONE 5 -->
+    <!--
+    <group ns="drone5">
+      <include file="$(find multi_drone)/launch/one_drone.launch" >
+        <arg name="x" value="1.8" />
+        <arg name="y" value="0.0" />
+        <arg name="drone_name"  value="drone5" />
+      </include>
+    </group>
+    -->
 
 </launch>

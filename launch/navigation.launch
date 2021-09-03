@@ -9,8 +9,8 @@
 
   <group ns="drone1">
     <include file="$(find multi_drone)/launch/move_base.launch" >
-      <arg name="initial_pose_x" value=" 0" />
-      <arg name="initial_pose_y" value=" 1" />
+      <arg name="initial_pose_x" value="-0.5" />
+      <arg name="initial_pose_y" value=" 0.5" />
       <arg name="initial_pose_a" value=" 0" />
       <arg name="drone_name" value="drone1"/>
     </include>
@@ -18,14 +18,43 @@
 
   <group ns="drone2">
     <include file="$(find multi_drone)/launch/move_base.launch" >
-      <arg name="initial_pose_x" value=" 0" />
-      <arg name="initial_pose_y" value="-1" />
+      <arg name="initial_pose_x" value="-0.5" />
+      <arg name="initial_pose_y" value="-0.5" />
       <arg name="initial_pose_a" value=" 0" />
       <arg name="drone_name" value="drone2"/>
     </include>
   </group>
 
+  <!--
+  <group ns="drone3">
+    <include file="$(find multi_drone)/launch/move_base.launch" >
+      <arg name="initial_pose_x" value="0.5" />
+      <arg name="initial_pose_y" value="0.5" />
+      <arg name="initial_pose_a" value=" 0" />
+      <arg name="drone_name" value="drone3"/>
+    </include>
+  </group>
+
+  <group ns="drone4">
+    <include file="$(find multi_drone)/launch/move_base.launch" >
+      <arg name="initial_pose_x" value=" 0.5" />
+      <arg name="initial_pose_y" value="-0.5" />
+      <arg name="initial_pose_a" value=" 0" />
+      <arg name="drone_name" value="drone4"/>
+    </include>
+  </group>
+
+  <group ns="drone5">
+    <include file="$(find multi_drone)/launch/move_base.launch" >
+      <arg name="initial_pose_x" value="1.8" />
+      <arg name="initial_pose_y" value="  0" />
+      <arg name="initial_pose_a" value="  0" />
+      <arg name="drone_name" value="drone5"/>
+    </include>
+  </group>
+  -->
+
   <!-- Launching Rviz -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find multi_drone)/rviz/multi_drone_navigation.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find multi_drone)/rviz/multi_drone_navigation.rviz" /> <!-- {1/multi/3/4/5}_drone_navigation.rviz -->
 
 </launch>
